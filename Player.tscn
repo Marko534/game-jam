@@ -1,0 +1,117 @@
+[gd_scene load_steps=22 format=3 uid="uid://mjw2cea7h0ud"]
+
+[ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
+[ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://player.gd" id="1_itxgx"]
+[ext_resource type="Texture2D" uid="uid://0k8cr45ean3h" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_2.png" id="2_itxgx"]
+[ext_resource type="Texture2D" uid="uid://0v5ddfry58hd" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_3.png" id="3_cgsek"]
+[ext_resource type="Texture2D" uid="uid://b5pkio6p4n6of" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_4.png" id="4_0pi4m"]
+[ext_resource type="Texture2D" uid="uid://bir3rkdaffysx" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_5.png" id="5_sg6sq"]
+[ext_resource type="Texture2D" uid="uid://dsmxinngm1226" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_6.png" id="6_h84ma"]
+[ext_resource type="Texture2D" uid="uid://bf1yr0ijcuscl" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_1.png" id="7_47wu6"]
+[ext_resource type="Texture2D" uid="uid://i8l4y738or6q" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_2.png" id="8_2n1s8"]
+[ext_resource type="Texture2D" uid="uid://cawmhvdeon8dk" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_3.png" id="9_3vjad"]
+[ext_resource type="Texture2D" uid="uid://dj83i7glrsbx" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_4.png" id="10_yt0h1"]
+[ext_resource type="Texture2D" uid="uid://dalkykk41p0io" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_5.png" id="11_vd78s"]
+[ext_resource type="Texture2D" uid="uid://c3c3mdqu0u6sl" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_6.png" id="12_ictha"]
+[ext_resource type="Texture2D" uid="uid://m47efna8wl2g" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_7.png" id="13_1jgrc"]
+[ext_resource type="Texture2D" uid="uid://b2mwqw1bj22xc" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_8.png" id="14_7wy67"]
+[ext_resource type="Texture2D" uid="uid://dotxoc05ppxeu" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_9.png" id="15_q26ax"]
+[ext_resource type="Texture2D" uid="uid://hjtb0colf1os" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_10.png" id="16_p01ps"]
+[ext_resource type="Texture2D" uid="uid://cdscex33kvlc0" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_11.png" id="17_m7dl7"]
+[ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
+radius = 6.0
+height = 45.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xmpta"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_efikj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_itxgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cgsek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0pi4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sg6sq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_h84ma")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_47wu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2n1s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3vjad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yt0h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vd78s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ictha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1jgrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7wy67")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q26ax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_p01ps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_m7dl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_48og4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 15.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_itxgx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0rwas")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(50, -50)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_xmpta")
+animation = &"new_animation"
+autoplay = "idle"
