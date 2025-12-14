@@ -86,4 +86,4 @@ func update_animations():
 		if abs(velocity.x) > 5: # A small threshold to avoid switching to "run" if barely moving
 			$AnimatedSprite2D.play("walk")
 		else:
-			$AnimatedSprite2D.play("idle")ddddddddddddddd
+			$AnimatedSprite2D.play("idle")
