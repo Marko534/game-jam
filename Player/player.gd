@@ -1,6 +1,7 @@
 # Player.gd
 extends CharacterBody2D
 
+@onready var camera = $Camera2D
 # Movement Constants
 const SPEED = 150.0       # Horizontal movement speed (pixels/second)
 const JUMP_VELOCITY = -300.0 # Jump strength (negative because Y goes down)
@@ -19,6 +20,10 @@ const COYOTE_TIME_THRESHOLD = 0.1 # 100 milliseconds of coyote time
 var jump_buffer_timer = 0.0
 const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Action"):
+		camera.limit_enabled = not camera.limit_enabled
+
 func _physics_process(delta):
 	# Apply gravity
 	if not is_on_floor():
@@ -33,7 +38,7 @@ func _physics_process(delta):
 		coyote_timer -= delta
 	if jump_buffer_timer > 0:
 		jump_buffer_timer -= delta
-
+	
 	# Handle Jump input (with buffer and coyote time)
 	if Input.is_action_just_pressed("jump"): # "jump" is an action defined in InputMap
 		jump_buffer_timer = JUMP_BUFFER_TIME_THRESHOLD
@@ -59,7 +64,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, direction * SPEED, SPEED * 2.0 * delta) # Last value is acceleration
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * 2.0 * delta) # Decelerate to a stop
-
+	
 	# Flip sprite based on velocity direction, not input direction
 	if $AnimatedSprite2D: # Ensure the node exists
 		# Only flip when velocity is significant enough to avoid jittering

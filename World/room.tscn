@@ -18,6 +18,7 @@ position = Vector2(481, 135)
 texture = ExtResource("1_1rwr2")
 
 [node name="HitboxWall" type="Node2D" parent="."]
+visible = false
 
 [node name="Floor" type="StaticBody2D" parent="HitboxWall"]
 position = Vector2(0, 222)

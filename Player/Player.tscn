@@ -110,6 +110,9 @@ occluder = SubResource("OccluderPolygon2D_roy6y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(50, -65)
+limit_left = 0
+limit_right = 810
+limit_smoothed = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)

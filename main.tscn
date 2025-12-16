@@ -1,55 +1,39 @@
-[gd_scene load_steps=11 format=3 uid="uid://buaq673iyr04d"]
+[gd_scene load_steps=8 format=4 uid="uid://buaq673iyr04d"]
 
-[ext_resource type="PackedScene" uid="uid://boifrvcuc7lec" path="res://World/room.tscn" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csi7qcr0jcjm6" path="res://World/light.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://mjw2cea7h0ud" path="res://Player/Player.tscn" id="4_1bvp3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h2yge"]
-closed = false
-polygon = PackedVector2Array(726, 72, 727, 211, 637, 211)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1bvp3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
 texture = ExtResource("2_1bvp3")
-texture_region_size = Vector2i(960, 270)
+texture_region_size = Vector2i(270, 270)
+0:0/size_in_atlas = Vector2i(3, 1)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-480, 92.8125, 480, 92.8125, 480, 135, -480, 135)
-0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(450, -135, 450, 92.8125, 450, 75.9375, 480, 75.9375, 480, -135)
-0:0/0/physics_layer_0/polygon_2/points = PackedVector2Array(-480, -135, -450, -135, -450, 67.5, -480, 67.5)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-405, 92.8125, 405, 92.8125, 405, 135, -405, 135)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(396.5625, 59.0625, 396.5625, -135, 405, -135, 405, 59.0625)
+0:0/0/physics_layer_0/polygon_2/points = PackedVector2Array(-396.5625, -135, -396.5625, 67.5, -405, 67.5, -405, -135)
 
 [sub_resource type="TileSet" id="TileSet_lquwl"]
-tile_size = Vector2i(1080, 270)
+tile_layout = 1
+tile_size = Vector2i(270, 270)
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_1bvp3")
-sources/0 = SubResource("TileSetAtlasSource_1bvp3")
-
-[sub_resource type="TileSet" id="TileSet_1bvp3"]
-tile_size = Vector2i(960, 270)
+sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 
 [node name="Node" type="Node"]
 
-[node name="Room" parent="." instance=ExtResource("1_h2yge")]
-visible = false
-
-[node name="TestWall2" type="Sprite2D" parent="Room"]
-visible = false
-z_index = -4
-texture_filter = 1
-position = Vector2(481, 135)
-texture = ExtResource("2_1bvp3")
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(-553, 152)
+position = Vector2(199, 184)
 
 [node name="Roof" type="StaticBody2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
 position = Vector2(480, -8)
@@ -64,14 +48,8 @@ softness = 5.0
 [node name="Light" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(493, -8)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_h2yge")
-sdf_collision = false
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_1bvp3")
+metadata/_edit_lock_ = true
