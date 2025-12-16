@@ -23,12 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bj1op1n6nta7b" path="res://Player/big_char_test.png" id="21_u5tep"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
-<<<<<<< HEAD
-closed = false
 polygon = PackedVector2Array(-150, 9, -150, 54)
-=======
-polygon = PackedVector2Array(-162, 9, -162, 55, -132, 55, -133, 9)
->>>>>>> 2f6ab13 (Played with light a bit and removed player shadow)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xmpta"]
 animations = [{
