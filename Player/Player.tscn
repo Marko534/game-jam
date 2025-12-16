@@ -1,7 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=25 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
-[ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://player.gd" id="1_itxgx"]
+[ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
 [ext_resource type="Texture2D" uid="uid://0k8cr45ean3h" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_2.png" id="2_itxgx"]
 [ext_resource type="Texture2D" uid="uid://0v5ddfry58hd" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_3.png" id="3_cgsek"]
 [ext_resource type="Texture2D" uid="uid://b5pkio6p4n6of" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_4.png" id="4_0pi4m"]
@@ -19,10 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://hjtb0colf1os" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_10.png" id="16_p01ps"]
 [ext_resource type="Texture2D" uid="uid://cdscex33kvlc0" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_11.png" id="17_m7dl7"]
 [ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
+[ext_resource type="Texture2D" uid="uid://c4amytjolvn54" path="res://Player/small_char_test.png" id="20_roy6y"]
+[ext_resource type="Texture2D" uid="uid://bj1op1n6nta7b" path="res://Player/big_char_test.png" id="21_u5tep"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
-radius = 6.0
-height = 45.0
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
+closed = false
+polygon = PackedVector2Array(-150, 9, -150, 54)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xmpta"]
 animations = [{
@@ -96,17 +98,33 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
+radius = 6.0
+height = 45.0
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_itxgx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_0rwas")
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(150, -32)
+occluder = SubResource("OccluderPolygon2D_roy6y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(50, -50)
+position = Vector2(50, -65)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_xmpta")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="SmallCharTest" type="Sprite2D" parent="."]
+position = Vector2(50, 0)
+texture = ExtResource("20_roy6y")
+
+[node name="BigCharTest" type="Sprite2D" parent="."]
+position = Vector2(150, -32)
+texture = ExtResource("21_u5tep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0rwas")
