@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=26 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
 [ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
 [ext_resource type="Texture2D" uid="uid://c4amytjolvn54" path="res://Player/small_char_test.png" id="20_roy6y"]
 [ext_resource type="Texture2D" uid="uid://bj1op1n6nta7b" path="res://Player/big_char_test.png" id="21_u5tep"]
+[ext_resource type="Texture2D" uid="uid://dni5mlt41eqet" path="res://Player/char shadoww.png" id="22_u5tep"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
 polygon = PackedVector2Array(-150, 9, -150, 54)
@@ -126,8 +127,19 @@ position = Vector2(50, 0)
 texture = ExtResource("20_roy6y")
 
 [node name="BigCharTest" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
 position = Vector2(150, -32)
 texture = ExtResource("21_u5tep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0rwas")
+
+[node name="CharShadoww" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -26)
+texture = ExtResource("22_u5tep")
+
+[node name="CharShadoww2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(150, -26)
+texture = ExtResource("22_u5tep")

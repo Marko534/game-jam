@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=4 uid="uid://buaq673iyr04d"]
+[gd_scene load_steps=14 format=4 uid="uid://buaq673iyr04d"]
 
 [ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csi7qcr0jcjm6" path="res://World/light.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://mjw2cea7h0ud" path="res://Player/Player.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bc6vcfsfxpa7o" path="res://World/door.tscn" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cpnqxf6hsd8ma" path="res://World/room/normal_room_test.png" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://c47hmpldgj212" path="res://World/huge_room_810x2430_template.png" id="6_7mycd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1bvp3"]
 
@@ -34,19 +35,27 @@ texture_region_size = Vector2i(270, 270)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-371.25, -126.5625, -371.25, 92.8125, -405, 92.8125, -405, -126.5625)
 0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-371.25, 92.8125, -371.25, 135, 405, 135, 405, 92.8125)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
+texture = ExtResource("6_7mycd")
+texture_region_size = Vector2i(270, 270)
+0:0/size_in_atlas = Vector2i(9, 3)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1181.25, 362.8125, -1189.6875, -405, -1215, -405, -1215, 362.8125)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-1181.25, 362.8125, -1181.25, 405, 1215, 405, 1215, 362.8125)
+
 [sub_resource type="TileSet" id="TileSet_272bh"]
 tile_size = Vector2i(270, 270)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7mycd")
+sources/1 = SubResource("TileSetAtlasSource_272bh")
 
 [node name="Node" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(199, 184)
+position = Vector2(231, 199)
 
 [node name="Door" parent="." instance=ExtResource("4_lquwl")]
 position = Vector2(483, 134)
@@ -78,7 +87,7 @@ softness = 5.0
 [node name="Room2" type="TileMapLayer" parent="."]
 visible = false
 z_index = -10
-tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAABAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAABAP//AAAAAAAAAAAEAAMAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_272bh")
 metadata/_edit_lock_ = true
 
