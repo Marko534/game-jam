@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://buaq673iyr04d"]
+[gd_scene load_steps=12 format=4 uid="uid://buaq673iyr04d"]
 
 [ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csi7qcr0jcjm6" path="res://World/light.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://mjw2cea7h0ud" path="res://Player/Player.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bc6vcfsfxpa7o" path="res://World/door.tscn" id="4_lquwl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cpnqxf6hsd8ma" path="res://World/room/normal_room_test.png" id="5_lquwl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1bvp3"]
 
@@ -25,6 +24,21 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_1bvp3")
 sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+texture = ExtResource("5_lquwl")
+texture_region_size = Vector2i(270, 270)
+0:0/size_in_atlas = Vector2i(3, 1)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-371.25, -126.5625, -371.25, 92.8125, -405, 92.8125, -405, -126.5625)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(-371.25, 92.8125, -371.25, 135, 405, 135, 405, 92.8125)
+
+[sub_resource type="TileSet" id="TileSet_272bh"]
+tile_size = Vector2i(270, 270)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7mycd")
+
 [node name="Node" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -34,29 +48,41 @@ color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 [node name="Player" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(199, 184)
 
-[node name="Roof" type="StaticBody2D" parent="."]
+[node name="Door" parent="." instance=ExtResource("4_lquwl")]
+position = Vector2(483, 134)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
-position = Vector2(480, -8)
-shape = SubResource("CircleShape2D_lquwl")
+[node name="Door2" parent="." instance=ExtResource("4_lquwl")]
+position = Vector2(621, 135)
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2(480, -8)
-node_a = NodePath("../Roof")
-node_b = NodePath("../Light")
-softness = 5.0
-
-[node name="Light" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(493, -8)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Room1" type="TileMapLayer" parent="."]
 z_index = -10
 tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
 metadata/_edit_lock_ = true
 
-[node name="Door" parent="." instance=ExtResource("4_lquwl")]
-position = Vector2(483, 134)
+[node name="Light" parent="Room1" instance=ExtResource("3_h2yge")]
+position = Vector2(493, -8)
+
+[node name="Roof" type="StaticBody2D" parent="Room1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/Roof"]
+position = Vector2(480, -8)
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Room1"]
+position = Vector2(480, -8)
+node_a = NodePath("../Roof")
+node_b = NodePath("../Light")
+softness = 5.0
+
+[node name="Room2" type="TileMapLayer" parent="."]
+visible = false
+z_index = -10
+tile_map_data = PackedByteArray("AAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAABAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_272bh")
+metadata/_edit_lock_ = true
 
 [connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Door" to="Player" method="_on_door_body_exited"]
+[connection signal="body_entered" from="Door2" to="Player" method="_on_door_2_body_entered"]
+[connection signal="body_exited" from="Door2" to="Player" method="_on_door_2_body_exited"]

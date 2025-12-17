@@ -20,9 +20,12 @@ const COYOTE_TIME_THRESHOLD = 0.1 # 100 milliseconds of coyote time
 var jump_buffer_timer = 0.0
 const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
 
+var door = false
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Action"):
-		camera.limit_enabled = not camera.limit_enabled
+		#camera.limit_enabled = not camera.limit_enabled
+		pass
 
 func _physics_process(delta):
 	# Apply gravity
@@ -74,6 +77,11 @@ func _physics_process(delta):
 		# Note: when velocity.x is 0, we don't change the flip state
 		# This maintains the last facing direction when stopping
 
+	# Rooms
+	if door and Input.is_action_just_pressed("Action"):
+		$"../Room1".visible = not $"../Room1".visible
+		$"../Room2".visible = not $"../Room2".visible
+
 	move_and_slide()
 
 	# Update animations
@@ -95,8 +103,17 @@ func update_animations():
 
 func _on_door_body_entered(body: Node2D) -> void:
 	print("DOOR") # Replace with function body.
+	door = true
+	
 	
  # Replace with function body.
-
 func _on_door_body_exited(body: Node2D) -> void:
+	door = false # Replace with function body.
+
+
+func _on_door_2_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_door_2_body_exited(body: Node2D) -> void:
 	pass # Replace with function body.
