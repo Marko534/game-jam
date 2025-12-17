@@ -106,16 +106,20 @@ height = 45.0
 script = ExtResource("1_itxgx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 position = Vector2(150, -32)
 occluder = SubResource("OccluderPolygon2D_roy6y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(50, -65)
-limit_enabled = false
-limit_left = 0
-limit_right = 810
+position = Vector2(0, -65)
+ignore_rotation = false
+limit_top = -200
+limit_bottom = 32
 limit_smoothed = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.3
+drag_top_margin = 0.3
+drag_right_margin = 0.3
+drag_bottom_margin = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)

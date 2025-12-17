@@ -181,7 +181,6 @@ z_index = -18
 scroll_scale = Vector2(0.7, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
-visible = false
 position = Vector2(0, -541)
 scale = Vector2(5, 5)
 texture = ExtResource("8_kek77")
@@ -189,16 +188,10 @@ texture = ExtResource("8_kek77")
 [node name="Parallax2D" type="Parallax2D" parent="."]
 z_index = -20
 scroll_scale = Vector2(0.05, 1)
-follow_viewport = false
 
 [node name="City" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(0, -269)
 texture = ExtResource("8_5vw27")
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(0, -541)
-scale = Vector2(5, 5)
-texture = ExtResource("8_kek77")
 
 [connection signal="body_entered" from="Rooms/Door" to="Player" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Rooms/Door" to="Player" method="_on_door_body_exited"]
