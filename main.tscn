@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://buaq673iyr04d"]
+[gd_scene load_steps=27 format=4 uid="uid://buaq673iyr04d"]
 
 [ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csi7qcr0jcjm6" path="res://World/light.tscn" id="3_h2yge"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cpnqxf6hsd8ma" path="res://World/room/normal_room_test.png" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c47hmpldgj212" path="res://World/huge_room_810x2430_template.png" id="6_7mycd"]
 [ext_resource type="Texture2D" uid="uid://dll7sxs7nmxmv" path="res://World/outside/pavment.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://c2lgettxct110" path="res://World/outside/city.png" id="8_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cumqh0xcp34o8" path="res://World/outside/buildings.png" id="8_kek77"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1bvp3"]
 
@@ -102,14 +104,14 @@ seamless = true
 [node name="Node" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(246, 116)
-collision_layer = 2
-collision_mask = 2
+position = Vector2(0, -39.42)
 
 [node name="Rooms" type="TileMapLayer" parent="."]
+visible = false
 z_index = -10
 tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
@@ -154,7 +156,6 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Outside" type="TileMapLayer" parent="."]
-visible = false
 z_index = -5
 position = Vector2(0, 48)
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD8////AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAD7////AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAA=")
@@ -174,6 +175,30 @@ position = Vector2(0, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Outside/Floor"]
 shape = SubResource("WorldBoundaryShape2D_7mycd")
+
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+z_index = -18
+scroll_scale = Vector2(0.7, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+visible = false
+position = Vector2(0, -541)
+scale = Vector2(5, 5)
+texture = ExtResource("8_kek77")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+z_index = -20
+scroll_scale = Vector2(0.05, 1)
+follow_viewport = false
+
+[node name="City" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(0, -269)
+texture = ExtResource("8_5vw27")
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(0, -541)
+scale = Vector2(5, 5)
+texture = ExtResource("8_kek77")
 
 [connection signal="body_entered" from="Rooms/Door" to="Player" method="_on_door_body_entered"]
 [connection signal="body_exited" from="Rooms/Door" to="Player" method="_on_door_body_exited"]
