@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://buaq673iyr04d"]
+[gd_scene load_steps=9 format=4 uid="uid://buaq673iyr04d"]
 
 [ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://csi7qcr0jcjm6" path="res://World/light.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://mjw2cea7h0ud" path="res://Player/Player.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://bc6vcfsfxpa7o" path="res://World/door.tscn" id="4_lquwl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 
@@ -30,7 +31,7 @@ sources/1 = SubResource("TileSetAtlasSource_1bvp3")
 visible = false
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_1bvp3")]
+[node name="Player" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(199, 184)
 
 [node name="Roof" type="StaticBody2D" parent="."]
@@ -49,7 +50,13 @@ softness = 5.0
 position = Vector2(493, -8)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-z_index = -1
-tile_map_data = PackedByteArray("AAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAEAAQAAAAAAAAAEAAAAAQAAAAAAAAA=")
+z_index = -10
+tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
 metadata/_edit_lock_ = true
+
+[node name="Door" parent="." instance=ExtResource("4_lquwl")]
+position = Vector2(483, 134)
+
+[connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]
+[connection signal="body_exited" from="Door" to="Player" method="_on_door_body_exited"]

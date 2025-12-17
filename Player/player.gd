@@ -92,3 +92,11 @@ func update_animations():
 			$AnimatedSprite2D.play("walk")
 		else:
 			$AnimatedSprite2D.play("idle")
+
+func _on_door_body_entered(body: Node2D) -> void:
+	print("DOOR") # Replace with function body.
+	
+ # Replace with function body.
+
+func _on_door_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

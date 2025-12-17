@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://bc6vcfsfxpa7o"]
+
+[sub_resource type="GDScript" id="GDScript_aw04c"]
+resource_name = "Door"
+script/source = "extends Area2D  # or Area3D for 3D
+
+@onready var sprite := $Higlight  # Adjust path to your texture node
+func _ready():
+	# Connect signal
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	print(\"Test DOOR\")
+
+func _on_body_entered(body: Node):
+	# Check if it's the player/character
+	if body.is_in_group(\"player\") or body.name == \"Player\":
+		sprite.visible = true
+	else:
+		print(body.is_in_group(\"player\"))
+
+func _on_body_exited(body: Node):
+	if body.is_in_group(\"player\") or body.name == \"Player\":
+		sprite.visible = false
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(64, 128)
+
+[sub_resource type="Gradient" id="Gradient_xb3ck"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wo5c"]
+gradient = SubResource("Gradient_xb3ck")
+height = 128
+
+[sub_resource type="Gradient" id="Gradient_aw04c"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.3254902, 1, 0.36078432, 0.24313726)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aw04c"]
+gradient = SubResource("Gradient_aw04c")
+height = 128
+
+[node name="Door" type="Area2D"]
+z_index = -1
+script = SubResource("GDScript_aw04c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+
+[node name="Door" type="Sprite2D" parent="."]
+z_index = -2
+texture = SubResource("GradientTexture2D_3wo5c")
+
+[node name="Higlight" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+texture = SubResource("GradientTexture2D_aw04c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

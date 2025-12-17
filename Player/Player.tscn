@@ -101,10 +101,11 @@ animations = [{
 radius = 6.0
 height = 45.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_itxgx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 position = Vector2(150, -32)
 occluder = SubResource("OccluderPolygon2D_roy6y")
 
