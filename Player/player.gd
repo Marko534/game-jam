@@ -79,8 +79,19 @@ func _physics_process(delta):
 
 	# Rooms
 	if door and Input.is_action_just_pressed("Action"):
-		$"../Room1".visible = not $"../Room1".visible
-		$"../Room2".visible = not $"../Room2".visible
+		if self.collision_layer == 2:
+			self.set_collision_layer_value(2, false)
+			self.set_collision_mask_value(2, false)
+			self.set_collision_layer_value(3, true)
+			self.set_collision_mask_value(3, true)
+		elif self.collision_layer == 3:
+			self.set_collision_layer_value(3, false)
+			self.set_collision_mask_value(3, false)
+			self.set_collision_layer_value(2, true)
+			self.set_collision_mask_value(2, true)
+
+		$"../Rooms".visible = not $"../Rooms".visible
+		$"../Building hall".visible = not $"../Building hall".visible
 
 	move_and_slide()
 
