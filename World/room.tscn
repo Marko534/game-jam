@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://boifrvcuc7lec"]
+
+[ext_resource type="Texture2D" uid="uid://c13eq3dhowyx7" path="res://World/test_wall_no_light.png" id="1_1rwr2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1rwr2"]
+b = Vector2(960, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sy3uv"]
+b = Vector2(0, 270)
+
+[node name="Room" type="Node2D"]
+
+[node name="TestWall" type="Sprite2D" parent="."]
+visible = false
+z_index = -4
+texture_filter = 1
+position = Vector2(481, 135)
+texture = ExtResource("1_1rwr2")
+
+[node name="HitboxWall" type="Node2D" parent="."]
+visible = false
+
+[node name="Floor" type="StaticBody2D" parent="HitboxWall"]
+position = Vector2(0, 222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxWall/Floor"]
+shape = SubResource("SegmentShape2D_1rwr2")
+
+[node name="LeftWall" type="StaticBody2D" parent="HitboxWall"]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxWall/LeftWall"]
+shape = SubResource("SegmentShape2D_sy3uv")
+
+[node name="RightWall" type="StaticBody2D" parent="HitboxWall"]
+position = Vector2(928, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxWall/RightWall"]
+shape = SubResource("SegmentShape2D_sy3uv")
