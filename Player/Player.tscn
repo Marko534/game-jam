@@ -20,9 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cdscex33kvlc0" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_11.png" id="17_m7dl7"]
 [ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
 [ext_resource type="Texture2D" uid="uid://dxqh7ilekofpq" path="res://Player/char - Copy.png" id="20_u5tep"]
-[ext_resource type="Texture2D" uid="uid://denblo5iv8iwl" path="res://Player/charrr.png" id="21_u5tep"]
+[ext_resource type="Texture2D" uid="uid://kg6v40c4w7db" path="res://Player/character game.png" id="22_ps8ct"]
 [ext_resource type="Texture2D" uid="uid://dni5mlt41eqet" path="res://Player/char shadoww.png" id="22_u5tep"]
-[ext_resource type="Texture2D" uid="uid://cxjh8mjaqa674" path="res://Player/char - 96.png" id="23_ps8ct"]
+[ext_resource type="Texture2D" uid="uid://dw72rpyau7d42" path="res://Player/char shadow.png" id="23_7uipr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
 polygon = PackedVector2Array(-150, 9, -150, 54)
@@ -130,10 +130,6 @@ autoplay = "idle"
 position = Vector2(2, -14)
 texture = ExtResource("20_u5tep")
 
-[node name="BigCharTest" type="Sprite2D" parent="."]
-position = Vector2(150, -32)
-texture = ExtResource("21_u5tep")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-81, 0)
 shape = SubResource("CapsuleShape2D_0rwas")
@@ -143,16 +139,12 @@ z_index = -1
 position = Vector2(0, -26)
 texture = ExtResource("22_u5tep")
 
-[node name="CharShadoww2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(150, -26)
-texture = ExtResource("22_u5tep")
-
-[node name="CharShadoww3" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(63, -26)
-texture = ExtResource("22_u5tep")
-
 [node name="Char96" type="Sprite2D" parent="."]
 position = Vector2(63, -20)
-texture = ExtResource("23_ps8ct")
+texture = ExtResource("22_ps8ct")
+
+[node name="CharShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.61960787)
+z_index = -1
+position = Vector2(63, -28)
+texture = ExtResource("23_7uipr")
