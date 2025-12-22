@@ -41,16 +41,16 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 3.61,
 "texture": ExtResource("2_x70vp")
 }, {
-"duration": 1.0,
+"duration": 3.61,
 "texture": ExtResource("3_wo5nf")
 }, {
-"duration": 1.0,
+"duration": 3.61,
 "texture": ExtResource("4_croik")
 }, {
-"duration": 1.0,
+"duration": 4.01,
 "texture": ExtResource("5_bgaaw")
 }, {
 "duration": 1.0,
@@ -129,6 +129,21 @@ animations = [{
 radius = 6.0
 height = 45.0
 
+[sub_resource type="Animation" id="Animation_bgaaw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_croik"]
 length = 0.6
 loop_mode = 1
@@ -144,21 +159,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_bgaaw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Test:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wo5nf"]
@@ -189,7 +189,7 @@ position = Vector2(-80, -5)
 sprite_frames = SubResource("SpriteFrames_xmpta")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.9594881
+frame_progress = 0.62270176
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
