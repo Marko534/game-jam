@@ -104,16 +104,16 @@ seamless = true
 [node name="Node" type="Node"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [node name="Player" parent="." instance=ExtResource("4_1bvp3")]
-position = Vector2(0, -39.42)
+position = Vector2(408, 172)
+collision_layer = 2
+collision_mask = 2
 
 [node name="Rooms" type="TileMapLayer" parent="."]
-visible = false
 z_index = -10
-tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAAAAQAAAAAAAAAEAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAAEAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAD9////AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
 metadata/_edit_lock_ = true
 
@@ -156,6 +156,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Outside" type="TileMapLayer" parent="."]
+visible = false
 z_index = -5
 position = Vector2(0, 48)
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD8////AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAD7////AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAA=")
@@ -177,6 +178,7 @@ position = Vector2(0, -48)
 shape = SubResource("WorldBoundaryShape2D_7mycd")
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]
+visible = false
 z_index = -18
 scroll_scale = Vector2(0.7, 1)
 
@@ -186,10 +188,12 @@ scale = Vector2(5, 5)
 texture = ExtResource("8_kek77")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 z_index = -20
 scroll_scale = Vector2(0.05, 1)
 
 [node name="City" type="Sprite2D" parent="Parallax2D"]
+visible = false
 position = Vector2(0, -269)
 texture = ExtResource("8_5vw27")
 
