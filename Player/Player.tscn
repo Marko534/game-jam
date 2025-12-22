@@ -1,11 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=36 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
 [ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
 [ext_resource type="Texture2D" uid="uid://0k8cr45ean3h" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_2.png" id="2_itxgx"]
+[ext_resource type="Texture2D" uid="uid://bdpq863sr7jpp" path="res://Player/idle/idle 1 (still).png" id="2_x70vp"]
 [ext_resource type="Texture2D" uid="uid://0v5ddfry58hd" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_3.png" id="3_cgsek"]
+[ext_resource type="Texture2D" uid="uid://50eu42vfo1xu" path="res://Player/idle/idle 2 (parts down)).png" id="3_wo5nf"]
 [ext_resource type="Texture2D" uid="uid://b5pkio6p4n6of" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_4.png" id="4_0pi4m"]
+[ext_resource type="Texture2D" uid="uid://bw0kt2cfno8qr" path="res://Player/idle/idle 3 (down).png" id="4_croik"]
+[ext_resource type="Texture2D" uid="uid://c7d0rxoxq4352" path="res://Player/idle/idle 4 (hand movement)).png" id="5_bgaaw"]
 [ext_resource type="Texture2D" uid="uid://bir3rkdaffysx" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_5.png" id="5_sg6sq"]
+[ext_resource type="Texture2D" uid="uid://cgnjsx5jtujfs" path="res://Player/idle/idle 5 (blink).png" id="6_gv3fu"]
 [ext_resource type="Texture2D" uid="uid://dsmxinngm1226" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_6.png" id="6_h84ma"]
 [ext_resource type="Texture2D" uid="uid://bf1yr0ijcuscl" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_1.png" id="7_47wu6"]
 [ext_resource type="Texture2D" uid="uid://i8l4y738or6q" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_2.png" id="8_2n1s8"]
@@ -19,9 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://hjtb0colf1os" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_10.png" id="16_p01ps"]
 [ext_resource type="Texture2D" uid="uid://cdscex33kvlc0" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_11.png" id="17_m7dl7"]
 [ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
-[ext_resource type="Texture2D" uid="uid://c4amytjolvn54" path="res://Player/small_char_test.png" id="20_roy6y"]
-[ext_resource type="Texture2D" uid="uid://denblo5iv8iwl" path="res://Player/charrr.png" id="21_u5tep"]
+[ext_resource type="Texture2D" uid="uid://dxqh7ilekofpq" path="res://Player/char - Copy.png" id="20_u5tep"]
+[ext_resource type="Texture2D" uid="uid://kg6v40c4w7db" path="res://Player/character game.png" id="22_ps8ct"]
 [ext_resource type="Texture2D" uid="uid://dni5mlt41eqet" path="res://Player/char shadoww.png" id="22_u5tep"]
+[ext_resource type="Texture2D" uid="uid://dw72rpyau7d42" path="res://Player/char shadow.png" id="23_7uipr"]
+[ext_resource type="Texture2D" uid="uid://dd4rt7nksqj2w" path="res://Player/idle/test.webp" id="29_wo5nf"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
 polygon = PackedVector2Array(-150, 9, -150, 54)
@@ -32,6 +39,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_x70vp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wo5nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_croik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bgaaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gv3fu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -53,7 +80,7 @@ animations = [{
 "texture": ExtResource("6_h84ma")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_old",
 "speed": 10.0
 }, {
 "frames": [{
@@ -102,6 +129,44 @@ animations = [{
 radius = 6.0
 height = 45.0
 
+[sub_resource type="Animation" id="Animation_croik"]
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_bgaaw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Test:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wo5nf"]
+_data = {
+&"RESET": SubResource("Animation_bgaaw"),
+&"walk": SubResource("Animation_croik")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_itxgx")
 
@@ -112,38 +177,49 @@ occluder = SubResource("OccluderPolygon2D_roy6y")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -65)
 ignore_rotation = false
-limit_top = -200
-limit_bottom = 32
 limit_smoothed = true
 drag_horizontal_enabled = true
 drag_left_margin = 0.3
-drag_top_margin = 0.3
+drag_top_margin = 1.0
 drag_right_margin = 0.3
-drag_bottom_margin = 0.3
+drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(-80, -5)
 sprite_frames = SubResource("SpriteFrames_xmpta")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.9594881
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
-position = Vector2(50, 0)
-texture = ExtResource("20_roy6y")
-
-[node name="BigCharTest" type="Sprite2D" parent="."]
-position = Vector2(150, -32)
-texture = ExtResource("21_u5tep")
+position = Vector2(120, -14)
+texture = ExtResource("20_u5tep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-81, 0)
 shape = SubResource("CapsuleShape2D_0rwas")
 
 [node name="CharShadoww" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(0, -26)
+position = Vector2(118, -26)
 texture = ExtResource("22_u5tep")
 
-[node name="CharShadoww2" type="Sprite2D" parent="."]
+[node name="Char96" type="Sprite2D" parent="."]
+position = Vector2(181, -20)
+texture = ExtResource("22_ps8ct")
+
+[node name="CharShadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.61960787)
 z_index = -1
-position = Vector2(150, -26)
-texture = ExtResource("22_u5tep")
+position = Vector2(181, -28)
+texture = ExtResource("23_7uipr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wo5nf")
+}
+
+[node name="Test" type="Sprite2D" parent="."]
+position = Vector2(29, -74)
+texture = ExtResource("29_wo5nf")
+hframes = 6
