@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 # Movement Constants
-const SPEED = 150.0/2       # Horizontal movement speed (pixels/second)
+const SPEED = 150.0       # Horizontal movement speed (pixels/second)
 const JUMP_VELOCITY = -300.0 # Jump strength (negative because Y goes down)
 
 # Gravity - you can get it from project settings or define it here
@@ -108,7 +108,7 @@ func update_animations():
 			$AnimatedSprite2D.play("fall")
 	else:
 		if abs(velocity.x) > 5: # A small threshold to avoid switching to "run" if barely moving
-			$AnimatedSprite2D.play("walk")
+			$AnimatedSprite2D.play("run")
 		else:
 			$AnimatedSprite2D.play("idle")
 
