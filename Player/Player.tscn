@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=44 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
 [ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
@@ -28,7 +28,15 @@
 [ext_resource type="Texture2D" uid="uid://kg6v40c4w7db" path="res://Player/character game.png" id="22_ps8ct"]
 [ext_resource type="Texture2D" uid="uid://dni5mlt41eqet" path="res://Player/char shadoww.png" id="22_u5tep"]
 [ext_resource type="Texture2D" uid="uid://dw72rpyau7d42" path="res://Player/char shadow.png" id="23_7uipr"]
+[ext_resource type="Texture2D" uid="uid://dw8d5yrbm44s1" path="res://walk test/2.png" id="25_xu7fl"]
+[ext_resource type="Texture2D" uid="uid://bey5vydd7aufd" path="res://walk test/3.png" id="27_4n5ed"]
+[ext_resource type="Texture2D" uid="uid://it1jwku43kn5" path="res://walk test/4.png" id="28_yf47d"]
+[ext_resource type="Texture2D" uid="uid://1t801demaw11" path="res://walk test/5.png" id="29_78fhc"]
+[ext_resource type="Texture2D" uid="uid://6lbkcx574wtl" path="res://walk test/6.png" id="29_jvfa1"]
 [ext_resource type="Texture2D" uid="uid://dd4rt7nksqj2w" path="res://Player/idle/test.webp" id="29_wo5nf"]
+[ext_resource type="Texture2D" uid="uid://vn8bga4m6hla" path="res://walk test/7.png" id="30_ib3vm"]
+[ext_resource type="Texture2D" uid="uid://cedoujeqfh7cr" path="res://walk test/8.png" id="31_vtj8b"]
+[ext_resource type="Texture2D" uid="uid://d14n4klrtwkpx" path="res://walk test/9.png" id="32_rqaa0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
 polygon = PackedVector2Array(-150, 9, -150, 54)
@@ -123,6 +131,35 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_xu7fl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_4n5ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_yf47d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_78fhc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_jvfa1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ib3vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_vtj8b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_rqaa0")
+}],
+"loop": true,
+"name": &"walkk",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
@@ -185,11 +222,11 @@ drag_right_margin = 0.3
 drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-80, -5)
+position = Vector2(-128, -1)
 sprite_frames = SubResource("SpriteFrames_xmpta")
-animation = &"idle"
+animation = &"walkk"
 autoplay = "idle"
-frame_progress = 0.62270176
+frame_progress = 0.9208919
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
