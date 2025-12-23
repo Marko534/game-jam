@@ -222,11 +222,11 @@ drag_right_margin = 0.3
 drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-128, -1)
+position = Vector2(-81, -1)
 sprite_frames = SubResource("SpriteFrames_xmpta")
 animation = &"walkk"
 autoplay = "idle"
-frame_progress = 0.9208919
+frame_progress = 0.4201196
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
