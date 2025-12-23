@@ -92,6 +92,35 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
+"duration": 1.01,
+"texture": ExtResource("25_xu7fl")
+}, {
+"duration": 1.01,
+"texture": ExtResource("26_jvfa1")
+}, {
+"duration": 1.01,
+"texture": ExtResource("28_yf47d")
+}, {
+"duration": 1.01,
+"texture": ExtResource("28_jvfa1")
+}, {
+"duration": 1.01,
+"texture": ExtResource("29_jvfa1")
+}, {
+"duration": 1.01,
+"texture": ExtResource("30_vtj8b")
+}, {
+"duration": 1.01,
+"texture": ExtResource("31_vtj8b")
+}, {
+"duration": 1.01,
+"texture": ExtResource("32_ib3vm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("7_47wu6")
 }, {
@@ -129,37 +158,8 @@ animations = [{
 "texture": ExtResource("18_48og4")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walk 2",
 "speed": 15.0
-}, {
-"frames": [{
-"duration": 1.11,
-"texture": ExtResource("25_xu7fl")
-}, {
-"duration": 1.11,
-"texture": ExtResource("26_jvfa1")
-}, {
-"duration": 1.11,
-"texture": ExtResource("28_yf47d")
-}, {
-"duration": 1.11,
-"texture": ExtResource("28_jvfa1")
-}, {
-"duration": 1.11,
-"texture": ExtResource("29_jvfa1")
-}, {
-"duration": 1.11,
-"texture": ExtResource("30_vtj8b")
-}, {
-"duration": 1.11,
-"texture": ExtResource("31_vtj8b")
-}, {
-"duration": 1.11,
-"texture": ExtResource("32_ib3vm")
-}],
-"loop": true,
-"name": &"walkk",
-"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
@@ -222,11 +222,11 @@ drag_right_margin = 0.3
 drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-126, -1)
+position = Vector2(-114, -1)
 sprite_frames = SubResource("SpriteFrames_xmpta")
-animation = &"walkk"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.094312645
+frame_progress = 0.2142861
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
