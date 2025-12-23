@@ -3,7 +3,8 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 # Movement Constants
-const SPEED = 150.0       # Horizontal movement speed (pixels/second)
+const SPEED_WALK = 150.0 / 2       # Horizontal movement speed (pixels/second)
+const SPEED_SPRINT = SPEED_WALK * 2       # Horizontal movement speed (pixels/second)
 const JUMP_VELOCITY = -300.0 # Jump strength (negative because Y goes down)
 
 # Gravity - you can get it from project settings or define it here
@@ -14,6 +15,7 @@ var air_jumps = 1         # For a double jump
 var current_air_jumps = 0
 
 # Variables for "game feel" techniques (we'll initialize them later)
+var sprint = false
 var coyote_timer = 0.0
 const COYOTE_TIME_THRESHOLD = 0.1 # 100 milliseconds of coyote time
 
@@ -60,13 +62,18 @@ func _physics_process(delta):
 
 	# Handle Horizontal input
 	var direction = Input.get_axis("move_left", "move_right") # "move_left" & "move_right" from InputMap
-
+	if Input.is_action_just_pressed("sprint"):
+		sprint = true
+	elif Input.is_action_just_released("sprint"):
+		sprint = false
 	# Movement with simple acceleration/deceleration
-	if direction:
+	if sprint and direction:
+		velocity.x = move_toward(velocity.x, direction * SPEED_SPRINT, SPEED_SPRINT * 2.0 * delta)
+	elif direction:
 		# We use move_toward for basic acceleration/deceleration
-		velocity.x = move_toward(velocity.x, direction * SPEED, SPEED * 2.0 * delta) # Last value is acceleration
+		velocity.x = move_toward(velocity.x, direction * SPEED_WALK, SPEED_WALK * 2.0 * delta) # Last value is acceleration
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * 2.0 * delta) # Decelerate to a stop
+		velocity.x = move_toward(velocity.x, 0, SPEED_SPRINT * 2.0 * delta) # Decelerate to a stop
 	
 	# Flip sprite based on velocity direction, not input direction
 	if $AnimatedSprite2D: # Ensure the node exists
@@ -107,8 +114,10 @@ func update_animations():
 		else:
 			$AnimatedSprite2D.play("fall")
 	else:
-		if abs(velocity.x) > 5: # A small threshold to avoid switching to "run" if barely moving
+		if sprint and abs(velocity.x) > 5:
 			$AnimatedSprite2D.play("run")
+		elif abs(velocity.x) > 5: # A small threshold to avoid switching to "run" if barely moving
+			$AnimatedSprite2D.play("walk")
 		else:
 			$AnimatedSprite2D.play("idle")
 

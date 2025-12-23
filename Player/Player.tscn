@@ -237,6 +237,7 @@ _data = {
 script = ExtResource("1_itxgx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 position = Vector2(150, -32)
 occluder = SubResource("OccluderPolygon2D_roy6y")
 
@@ -251,18 +252,15 @@ drag_right_margin = 0.3
 drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-105, -1)
 sprite_frames = SubResource("SpriteFrames_xmpta")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.50571805
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
 texture = ExtResource("20_u5tep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-81, 0)
 shape = SubResource("CapsuleShape2D_0rwas")
 
 [node name="CharShadoww" type="Sprite2D" parent="."]
