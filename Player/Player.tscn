@@ -98,51 +98,51 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("13_ww5s2")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("14_xw4su")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("15_x2ho1")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("16_eennk")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("17_yyr8h")
 }, {
-"duration": 1.0,
+"duration": 1.11,
 "texture": ExtResource("18_i325y")
 }],
 "loop": true,
 "name": &"run",
-"speed": 7.0
+"speed": 8.0
 }, {
 "frames": [{
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("25_xu7fl")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("26_jvfa1")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("28_yf47d")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("28_jvfa1")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("29_jvfa1")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("30_vtj8b")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("31_vtj8b")
 }, {
-"duration": 1.01,
+"duration": 1.21,
 "texture": ExtResource("32_ib3vm")
 }],
 "loop": true,
@@ -255,7 +255,7 @@ position = Vector2(-105, -1)
 sprite_frames = SubResource("SpriteFrames_xmpta")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.9738536
+frame_progress = 0.50571805
 
 [node name="SmallCharTest" type="Sprite2D" parent="."]
 position = Vector2(120, -14)
