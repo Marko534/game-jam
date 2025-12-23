@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyo1oxm0jod21"
-path="res://.godot/imported/nv charr.png-86177317aa68744fb33c021a6d5e353c.ctex"
+uid="uid://dhtq3rb7be83f"
+path="res://.godot/imported/5 final.png-1d181d5f0b7f92b5bbcc3bafd518bcfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://nv charr.png"
-dest_files=["res://.godot/imported/nv charr.png-86177317aa68744fb33c021a6d5e353c.ctex"]
+source_file="res://Player/walk/5 final.png"
+dest_files=["res://.godot/imported/5 final.png-1d181d5f0b7f92b5bbcc3bafd518bcfc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://denblo5iv8iwl"
-path="res://.godot/imported/charrr.png-6d0bfaf9d232bdc74478f94dcb77506c.ctex"
+uid="uid://cdg51m3dgubj8"
+path="res://.godot/imported/1.png-901d6b30796720bb67ab3c77a68cdaa1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/charrr.png"
-dest_files=["res://.godot/imported/charrr.png-6d0bfaf9d232bdc74478f94dcb77506c.ctex"]
+source_file="res://Player/walk/1.png"
+dest_files=["res://.godot/imported/1.png-901d6b30796720bb67ab3c77a68cdaa1.ctex"]
 
 [params]
 
