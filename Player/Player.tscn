@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=43 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
 [ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
@@ -30,16 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://bwd18qny6xxnl" path="res://character run/5.png" id="17_yyr8h"]
 [ext_resource type="Texture2D" uid="uid://3yq2f2t75do2" path="res://Medieval_Castle_Asset_Pack/Characters/knight/walk/walk_knight_12.png" id="18_48og4"]
 [ext_resource type="Texture2D" uid="uid://k3p4ow74fm3e" path="res://character run/6.png" id="18_i325y"]
-[ext_resource type="Texture2D" uid="uid://dxqh7ilekofpq" path="res://Player/char - Copy.png" id="20_u5tep"]
-[ext_resource type="Texture2D" uid="uid://kg6v40c4w7db" path="res://Player/character game.png" id="22_ps8ct"]
-[ext_resource type="Texture2D" uid="uid://dni5mlt41eqet" path="res://Player/char shadoww.png" id="22_u5tep"]
 [ext_resource type="Texture2D" uid="uid://dw72rpyau7d42" path="res://Player/char shadow.png" id="23_7uipr"]
 [ext_resource type="Texture2D" uid="uid://dw8d5yrbm44s1" path="res://walk test/2.png" id="25_xu7fl"]
 [ext_resource type="Texture2D" uid="uid://vqpm3che1tjb" path="res://walk test/3 fixed.png" id="26_jvfa1"]
 [ext_resource type="Texture2D" uid="uid://dhtq3rb7be83f" path="res://walk test/5 final.png" id="28_jvfa1"]
 [ext_resource type="Texture2D" uid="uid://it1jwku43kn5" path="res://walk test/4.png" id="28_yf47d"]
 [ext_resource type="Texture2D" uid="uid://6lbkcx574wtl" path="res://walk test/6.png" id="29_jvfa1"]
-[ext_resource type="Texture2D" uid="uid://dd4rt7nksqj2w" path="res://Player/idle/test.webp" id="29_wo5nf"]
 [ext_resource type="Texture2D" uid="uid://dkoxrvhej4xjd" path="res://walk test/7 fixed.png" id="30_vtj8b"]
 [ext_resource type="Texture2D" uid="uid://cedoujeqfh7cr" path="res://walk test/8.png" id="31_vtj8b"]
 [ext_resource type="Texture2D" uid="uid://b2qqymkigxp8" path="res://walk test/9 final.png" id="32_ib3vm"]
@@ -192,46 +188,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rwas"]
-radius = 6.0
-height = 45.0
-
-[sub_resource type="Animation" id="Animation_bgaaw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Test:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_croik"]
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Test:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 2, 3, 4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wo5nf"]
-_data = {
-&"RESET": SubResource("Animation_bgaaw"),
-&"walk": SubResource("Animation_croik")
-}
+height = 70.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_itxgx")
@@ -253,37 +210,15 @@ drag_bottom_margin = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xmpta")
-animation = &"run"
+animation = &"walk"
 autoplay = "idle"
-
-[node name="SmallCharTest" type="Sprite2D" parent="."]
-position = Vector2(120, -14)
-texture = ExtResource("20_u5tep")
+frame_progress = 0.869149
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0rwas")
 
-[node name="CharShadoww" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(118, -26)
-texture = ExtResource("22_u5tep")
-
-[node name="Char96" type="Sprite2D" parent="."]
-position = Vector2(181, -20)
-texture = ExtResource("22_ps8ct")
-
 [node name="CharShadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.61960787)
 z_index = -1
-position = Vector2(181, -28)
+position = Vector2(1, -18)
 texture = ExtResource("23_7uipr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wo5nf")
-}
-
-[node name="Test" type="Sprite2D" parent="."]
-position = Vector2(29, -74)
-texture = ExtResource("29_wo5nf")
-hframes = 6
