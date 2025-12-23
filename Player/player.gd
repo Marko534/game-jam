@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var camera = $Camera2D
 # Movement Constants
-const SPEED = 150.0       # Horizontal movement speed (pixels/second)
+const SPEED = 150.0/2       # Horizontal movement speed (pixels/second)
 const JUMP_VELOCITY = -300.0 # Jump strength (negative because Y goes down)
 
 # Gravity - you can get it from project settings or define it here
