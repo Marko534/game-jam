@@ -6,6 +6,7 @@
 
 [sub_resource type="Gradient" id="Gradient_hers2"]
 interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.8341772)
 colors = PackedColorArray(0.48962224, 0.48962224, 0.48962218, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6wdi3"]
@@ -29,5 +30,7 @@ texture = ExtResource("1_hers2")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 25)
+color = Color(1, 0.78431374, 0, 1)
+energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_6wdi3")

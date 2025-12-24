@@ -242,3 +242,4 @@ volume_db = -20.0
 
 [node name="BreathingFast" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("42_ww5s2")
+volume_db = -15.0
