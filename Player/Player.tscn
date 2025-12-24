@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://mjw2cea7h0ud"]
+[gd_scene load_steps=44 format=3 uid="uid://mjw2cea7h0ud"]
 
 [ext_resource type="Texture2D" uid="uid://cf4m3jmjfrqfs" path="res://Medieval_Castle_Asset_Pack/Characters/knight/idle/idle_knight_1.png" id="1_efikj"]
 [ext_resource type="Script" uid="uid://dagqjcrmcynbn" path="res://Player/player.gd" id="1_itxgx"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://dkoxrvhej4xjd" path="res://Player/walk/7 fixed.png" id="30_vtj8b"]
 [ext_resource type="Texture2D" uid="uid://cedoujeqfh7cr" path="res://Player/walk/8.png" id="31_vtj8b"]
 [ext_resource type="Texture2D" uid="uid://b2qqymkigxp8" path="res://Player/walk/9 final.png" id="32_ib3vm"]
+[ext_resource type="AudioStream" uid="uid://hp836mxw7myb" path="res://Player/sound/wood_creek.mp3" id="40_rqaa0"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_roy6y"]
 polygon = PackedVector2Array(-150, 9, -150, 54)
@@ -223,3 +224,12 @@ modulate = Color(1, 1, 1, 0.61960787)
 z_index = -1
 position = Vector2(1, -18)
 texture = ExtResource("23_7uipr")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="FootstepRun" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("40_rqaa0")
+pitch_scale = 1.5
+
+[node name="FootstepWalk" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("40_rqaa0")
