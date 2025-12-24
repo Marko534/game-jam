@@ -2,6 +2,14 @@
 extends CharacterBody2D
 
 @onready var camera = $Camera2D
+
+@onready var footsteps_walk = $Sound/FootstepWalk
+@onready var footsteps_run = $Sound/FootstepRun
+@onready var breathing_slow = $Sound/BreathingSlow
+@onready var breathing_fast = $Sound/BreathingFast
+
+@onready var animation = $AnimatedSprite2D
+
 # Movement Constants
 const SPEED_WALK = 150.0 / 2       # Horizontal movement speed (pixels/second)
 const SPEED_SPRINT = SPEED_WALK * 2       # Horizontal movement speed (pixels/second)
@@ -23,6 +31,12 @@ var jump_buffer_timer = 0.0
 const JUMP_BUFFER_TIME_THRESHOLD = 0.1 # 100 milliseconds for jump buffer
 
 var door = false
+
+func _ready() -> void:
+	footsteps_walk.play()
+	footsteps_walk.stream_paused = true  # Start paused
+	
+	breathing_slow.play()
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Action"):
@@ -76,11 +90,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED_SPRINT * 2.0 * delta) # Decelerate to a stop
 	
 	# Flip sprite based on velocity direction, not input direction
-	if $AnimatedSprite2D: # Ensure the node exists
+	if animation: # Ensure the node exists
 		# Only flip when velocity is significant enough to avoid jittering
 		if abs(velocity.x) > 10: # Threshold to prevent flipping when barely moving
 			# Flip when moving left (negative velocity)
-			$AnimatedSprite2D.flip_h = (velocity.x < 0)
+			animation.flip_h = (velocity.x < 0)
 		# Note: when velocity.x is 0, we don't change the flip state
 		# This maintains the last facing direction when stopping
 
@@ -106,20 +120,47 @@ func _physics_process(delta):
 	update_animations()
 
 func update_animations():
-	if not $AnimatedSprite2D: return # Exit if no AnimatedSprite2D
+	if not animation: return
 
 	if not is_on_floor():
+		footsteps_walk.stream_paused = true
+		footsteps_run.stop()  # Stop completely
+		breathing_slow.stream_paused = true
+		breathing_fast.stop()  # Stop completely
+		
 		if velocity.y < 0:
-			$AnimatedSprite2D.play("jump")
+			animation.play("jump")
 		else:
-			$AnimatedSprite2D.play("fall")
+			animation.play("fall")
 	else:
 		if sprint and abs(velocity.x) > 5:
-			$AnimatedSprite2D.play("run")
-		elif abs(velocity.x) > 5: # A small threshold to avoid switching to "run" if barely moving
-			$AnimatedSprite2D.play("walk")
+			breathing_slow.stream_paused = true
+			footsteps_walk.stream_paused = true
+			
+			# Start sprint sounds if not playing
+			if not breathing_fast.playing:
+				breathing_fast.play()
+			if not footsteps_run.playing:
+				footsteps_run.play()
+			
+			animation.play("run")
+		elif abs(velocity.x) > 5:
+			# Stop sprint sounds
+			breathing_fast.stop()
+			footsteps_run.stop()
+			
+			# Play walk sounds
+			footsteps_walk.stream_paused = false
+			breathing_slow.stream_paused = false
+			animation.play("walk")
 		else:
-			$AnimatedSprite2D.play("idle")
+			# Stop all movement sounds
+			breathing_fast.stop()
+			footsteps_run.stop()
+			footsteps_walk.stream_paused = true
+			
+			breathing_slow.stream_paused = false
+			animation.play("idle")
 
 func _on_door_body_entered(body: Node2D) -> void:
 	print("DOOR") # Replace with function body.
